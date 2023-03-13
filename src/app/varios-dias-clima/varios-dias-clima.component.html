@@ -1,0 +1,29 @@
+<div style=" align-items: center; padding: 25px 50px 75px 100px; ">
+    <div class="container text-center">
+        <div class="row">
+            <ng-container *ngFor="let persona of selectedFullDates">
+                <div class="col">
+                    <div class="card text-center mb-3" style="width: 20rem; ">
+                        <div class="card-body">
+                            <h5 class="card-title">TIEMPO</h5>
+                            <p><img src="{{ persona.weather.icon.url }}" alt="Sunny" />Temperatura: {{
+                                persona.weather.temp.cur }} °C
+                            </p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Real Feel {{ persona.weather.feelsLike.cur }} °C</li>
+                                <li class="list-group-item">Valocidad del Viento: {{ persona.weather.wind.speed }} Km/h</li>
+                                <li class="list-group-item">Humedad: {{ persona.weather.humidity }} %</li>
+                                <li class="list-group-item">Porcentaje de Nubes: {{ persona.weather.clouds }} %</li>
+                                <li class="list-group-item">Prediccion: {{ persona.weather.description }}</li>
+                                <li class="list-group-item">Fecha: {{ persona.dt }}</li>
+                              </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <a href="http://localhost:4200/" class="btn btn-primary">Regresar</a>
+    </div>
+    
+</div>

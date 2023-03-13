@@ -1,0 +1,34 @@
+<ng-container *ngIf="showdates">
+  <div style="justify-content: center; align-items: center; padding: 25px 50px 75px 100px;  ">
+    <div class="card text-center mb-3" style="justify-content: center; margin-left: 25%;
+    margin-right: 25%;">
+    <div class="card text-bg-dark">
+        <h5 class="card-title">Weather in {{city}}</h5>
+        <p><img src="{{ result.weather.icon.url }}" alt="Sunny" />Temperatura: {{ result.weather.temp.cur }} °C
+        </p>
+        <p>Real Feel {{ result.weather.feelsLike.cur }} °C</p>
+      </div>
+    </div>
+    <br />
+    <div class="card text-center mb-3" style="margin-left: 25%;
+    margin-right: 25%; align-items: center; ">
+      <div class="card-body">
+        <h5 class="card-title">Temperatura</h5>
+        <p><img src="{{ result.weather.icon.url }}" alt="Sunny" />Temperatura Actual: {{ result.weather.temp.cur }} °C
+        </p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Valocidad del Viento: {{ result.weather.wind.speed }} Km/h</li>
+          <li class="list-group-item">Humedad: {{ result.weather.humidity }} %</li>
+          <li class="list-group-item">Porcentaje de Nubes: {{ result.weather.clouds }} %</li>
+          <li class="list-group-item">Prediccion: {{ result.weather.description }}</li>
+        </ul>
+        <a (click)="CambiarBoton()" class="btn btn-primary">View More Days</a>
+      </div>
+
+    </div>
+    
+  </div>
+</ng-container>
+<ng-container  *ngIf="!showdates">
+  <app-varios-dias-clima [selectedFullDates]="selectedFullDates"></app-varios-dias-clima>
+</ng-container>
