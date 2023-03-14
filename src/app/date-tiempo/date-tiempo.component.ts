@@ -23,19 +23,18 @@ export class DateTiempoComponent {
 
   ngOnInit(): void {    
     this.city=this.route.snapshot.params['city'];
-    console.log('hhh: ',this.city);
     this.consultApi(this.city);
   }
+  //This function makes the call to the NestJS API which sends the name of the city from which the query is to be made in the URL
   consultApi(city:string){
     this.http.get(`http://localhost:3000/api-tiempo-data/${city}`).subscribe((data) => {
       this.items.push(data);
-      console.log(this.items[0]);
       this.result = this.items[0][0];
       let selectedDates: any[] = [];
       this.items[0].forEach((obj: { dt: string | number | Date; }) => {
         let fecha = new Date(obj.dt);
         let anio = fecha.getFullYear();
-        let mes = fecha.getMonth() + 1; // Los meses en JavaScript comienzan en cero, por lo que debemos sumar 1 para obtener el mes correcto
+        let mes = fecha.getMonth() + 1; 
         let dia = fecha.getDate();
         let fechaSolo = new Date(`${anio}-${mes}-${dia}`);
         const date = fechaSolo.getTime();
@@ -48,13 +47,4 @@ export class DateTiempoComponent {
       
     });
   }
-  /*onClick() {
-    const param = 'Quito';
-    const url = `http://localhost:3000/api-tiempo-data/${param}`;
-
-    this.http.get(url).subscribe(
-      data => this.result = data,
-      error => console.error(error)
-    );
-  }*/
 }
